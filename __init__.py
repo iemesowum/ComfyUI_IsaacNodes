@@ -1,7 +1,7 @@
 """
 @author: Isaac Emesowum
 @title: Isaac's Nodes
-@nickname: Impact Pack
+@nickname: Isaac's Nodes
 @description: This extension offers automatic drums extraction from audio files, as well as a few helper nodes to support my audio synchronization AnimateDiff workflows.
 """
 
