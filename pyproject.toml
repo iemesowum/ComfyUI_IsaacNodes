@@ -1,0 +1,15 @@
+[project]
+name = "comfyui_isaacnodes"
+description = "This extension offers automatic drums extraction from audio files, as well as a few helper nodes to support my audio synchronization AnimateDiff workflows."
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["openunmix[stempeg]"]
+
+[project.urls]
+Repository = "https://github.com/iemesowum/ComfyUI_IsaacNodes"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI_IsaacNodes"
+Icon = ""
