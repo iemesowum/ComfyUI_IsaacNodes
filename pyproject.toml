@@ -10,6 +10,6 @@ Repository = "https://github.com/iemesowum/ComfyUI_IsaacNodes"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "iemesowum"
 DisplayName = "ComfyUI_IsaacNodes"
 Icon = ""
