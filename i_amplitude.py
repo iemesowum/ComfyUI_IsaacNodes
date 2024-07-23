@@ -13,15 +13,32 @@ class I_BinaryAmplitudeGate:
         return {"required": {
             "normalized_amp": ("NORMALIZED_AMPLITUDE",),
             "threshold": ("FLOAT", {"default": 0.3, "min": 0.0, "max": 1.0, "step": 0.01}),
+            "min": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 2.0, "step": 0.01}),
+            "max": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 2.0, "step": 0.01}),
         }}
     CATEGORY = "Isaac's Nodes"
     RETURN_TYPES = ("NORMALIZED_AMPLITUDE",)
     RETURN_NAMES = ("normalized_amp",)
     FUNCTION = "gate"
 
-    def gate(self, normalized_amp, threshold: float):
-        binary_amp = np.where(normalized_amp > threshold, 1.0, 0.0)
+    def gate(self, normalized_amp, threshold: float, min: float, max: float):
+        binary_amp = np.where(normalized_amp > threshold, max, min)
+
         return (binary_amp,)
+
+class I_AmplitudeToWeights:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {
+            "normalized_amp": ("NORMALIZED_AMPLITUDE",),
+        }}
+    CATEGORY = "Isaac's Nodes"
+    RETURN_TYPES = ("FLOAT",)
+    RETURN_NAMES = ("weights",)
+    FUNCTION = "to_weights"
+
+    def to_weights(self, normalized_amp):
+        return (list(normalized_amp),)
 
 class I_WeightsListToWeights:
     @classmethod

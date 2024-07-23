@@ -1,7 +1,7 @@
 [project]
 name = "comfyui_isaacnodes"
 description = "This extension offers automatic drums extraction from audio files, as well as a few helper nodes to support my audio synchronization AnimateDiff workflows."
-version = "1.0.0"
+version = "1.0.1"
 license = """
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007

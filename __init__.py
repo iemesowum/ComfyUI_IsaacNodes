@@ -13,18 +13,20 @@ ComfyUI_IsaacNodes is distributed in the hope that it will be useful, but WITHOU
 You should have received a copy of the GNU Affero General Public License along with ComfyUI_IsaacNodes. If not, see <https://www.gnu.org/licenses/>.
 """
 from .i_unmix import I_UnmixAudio
-from .i_amplitude import I_BinaryAmplitudeGate
+from .i_amplitude import I_BinaryAmplitudeGate, I_AmplitudeToWeights
 from .i_amplitude import I_WeightsListToWeights
 
 NODE_CLASS_MAPPINGS = {
     "I_UnmixAudio": I_UnmixAudio,
     "I_BinaryAmplitudeGate": I_BinaryAmplitudeGate,
+    "I_AmplitudeToWeights": I_AmplitudeToWeights,
     "I_WeightsListToWeights": I_WeightsListToWeights,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "I_UnmixAudio": "Isaac's Audio Unmixer (drums)",
     "I_BinaryAmplitudeGate": "Isaac's Binary Amplitude Gate",
+    "I_AmplitudeToWeights": "Isaac's Amplitude To Weights",
     "I_WeightsListToWeights": "Isaac's Weights List to Weights",
 }
 
