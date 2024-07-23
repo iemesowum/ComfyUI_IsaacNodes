@@ -2,7 +2,16 @@
 name = "comfyui_isaacnodes"
 description = "This extension offers automatic drums extraction from audio files, as well as a few helper nodes to support my audio synchronization AnimateDiff workflows."
 version = "1.0.0"
-license = {file = "COPYING"}
+license = """
+                    GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+ Full license text available here: https://github.com/iemesowum/ComfyUI_IsaacNodes/blob/2efa9295ece85a3a225a8746b51de9dd1848c44f/COPYING.
+"""
 dependencies = ["openunmix[stempeg]"]
 
 [project.urls]
