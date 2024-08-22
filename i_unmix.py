@@ -16,10 +16,10 @@ class I_UnmixAudio:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": { "audio": ("VHS_AUDIO",), },}
+        return {"required": { "audio": ("AUDIO",), },}
 
     CATEGORY = "Isaac's Nodes"
-    RETURN_TYPES = ("VHS_AUDIO", "VHS_AUDIO", "VHS_AUDIO",)
+    RETURN_TYPES = ("AUDIO", "AUDIO", "AUDIO",)
     RETURN_NAMES = ("drums", "vocals", "other",)
 
     FUNCTION = "unmix"
@@ -29,8 +29,8 @@ class I_UnmixAudio:
         separator = umxl(targets=['drums', 'vocals', 'other'])
 
         # load VHS audio
-        file = BytesIO(audio())
-        audio, rate = torchaudio.load(file)
+        rate = audio["sample_rate"]
+        audio = audio["waveform"]
 
         print(f"audio rate: {rate}")
 
@@ -39,19 +39,15 @@ class I_UnmixAudio:
 
         # drums
         drumsBuffer = BytesIO()
-        torchaudio.save(drumsBuffer, torch.squeeze(estimates['drums']).to("cpu"), sample_rate=rate, format='wav')
-        drums = lambda : drumsBuffer.getvalue()
+        drums = {"waveform": estimates['drums'], "sample_rate": rate}
 
         # vocals
         vocalsBuffer = BytesIO()
-        torchaudio.save(vocalsBuffer, torch.squeeze(estimates['vocals']).to("cpu"), sample_rate=rate, format='wav')
-        vocals = lambda : vocalsBuffer.getvalue()
+        vocals = {"waveform": estimates['vocals'], "sample_rate": rate}
 
         # other
         otherBuffer = BytesIO()
-        torchaudio.save(otherBuffer, torch.squeeze(estimates['other']).to("cpu"), sample_rate=rate, format='wav')
-        other = lambda : otherBuffer.getvalue()
+        other = { "waveform": estimates['other'], "sample_rate": rate }
 
-        # return audio in VHS expected format (a lambda callback)
         return (drums, vocals, other,)
 
